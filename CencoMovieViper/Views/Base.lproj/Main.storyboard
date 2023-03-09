@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="1131.8840579710145" y="205.58035714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Top Rates Details View Controller-->
         <scene sceneID="Wm0-lv-qxk">
             <objects>
-                <viewController id="MbO-a0-ZYS" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TopRatesDetailsViewController" id="MbO-a0-ZYS" customClass="TopRatesDetailsViewController" customModule="CencoMovieViper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Jo-0l-8w3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="1131.8840579710145" y="-459.375"/>
         </scene>
-        <!--View Controller-->
+        <!--Popular Details View Controller-->
         <scene sceneID="pJF-Ve-eoS">
             <objects>
-                <viewController id="ADh-F0-tNc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopularDetailsViewController" id="ADh-F0-tNc" customClass="PopularDetailsViewController" customModule="CencoMovieViper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t48-8t-A1n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
