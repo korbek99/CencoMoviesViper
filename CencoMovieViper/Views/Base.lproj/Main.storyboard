@@ -24,6 +24,21 @@
             </objects>
             <point key="canvasLocation" x="1131.8840579710145" y="205.58035714285714"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Wm0-lv-qxk">
+            <objects>
+                <viewController id="MbO-a0-ZYS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Jo-0l-8w3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="W08-ei-0ht"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6gY-VM-852" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1880" y="212"/>
+        </scene>
         <!--Popular Movies-->
         <scene sceneID="UO9-iJ-ghJ">
             <objects>
@@ -39,6 +54,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXI-bJ-qOM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1131.8840579710145" y="-459.375"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pJF-Ve-eoS">
+            <objects>
+                <viewController id="ADh-F0-tNc" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t48-8t-A1n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="CgD-nv-56B"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NGj-m1-g3E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1883" y="-455"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gtZ-1w-lJq">

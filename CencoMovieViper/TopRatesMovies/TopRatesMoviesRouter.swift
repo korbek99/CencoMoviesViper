@@ -7,6 +7,7 @@
 import UIKit
 
 @objc protocol TopRatesMoviesRoutingLogic {
+    func routeToDetailsTop(name:String ,desc:String ,images:String ) 
 }
 
 protocol TopRatesMoviesDataPassing {
@@ -19,7 +20,13 @@ class TopRatesMoviesRouter: NSObject, TopRatesMoviesRoutingLogic, TopRatesMovies
     var dataStore: TopRatesMoviesDataStore?
 
     // MARK: - Routing
-
+    func routeToDetailsTop(name:String ,desc:String ,images:String ) {
+        let ViewController = TopRatesDetailsViewController()
+//        ViewController.latitudMap = latitud
+//        ViewController.lontitudMap = lontitud
+//        ViewController.lugarString = nombreString
+        self.viewController?.navigationController?.pushViewController(ViewController, animated: true)
+    }
     // MARK: - Passing data
 
     //func passDataToSomewhere(source: TopRatesMoviesDataStore, destination: inout SomewhereDataStore) {

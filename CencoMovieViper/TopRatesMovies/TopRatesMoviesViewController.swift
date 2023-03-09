@@ -143,6 +143,6 @@ extension TopRatesMoviesViewController:  UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.router?.routeToDetailsMenu(nombre: listMovies[indexPath.row].name, image: String(listMovies[indexPath.row].image), decrip: listMovies[indexPath.row].desc, precio: String(listMovies[indexPath.row].price), latitud: listMovies[indexPath.row].latitude, lontitud: listMovies[indexPath.row].longitude)
+        router?.routeToDetailsTop(name:listMovies[indexPath.row].title ,desc:listMovies[indexPath.row].overview ,images:String(listMovies[indexPath.row].posterPath))
     }
 }
