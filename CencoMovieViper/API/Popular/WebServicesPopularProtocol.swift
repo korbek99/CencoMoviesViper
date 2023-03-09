@@ -7,10 +7,10 @@
 
 import Foundation
 import UIKit
-protocol WebServicesProtocol {
+protocol WebServicesPopularProtocol {
     func getArticles( completion: @escaping ([Result]?) -> ())
 }
-class webServicesMenu {
+class webServicesPopular {
     var urlbase:String = ""
     func getArticles( completion: @escaping ([Result]?) -> ()) {
         
