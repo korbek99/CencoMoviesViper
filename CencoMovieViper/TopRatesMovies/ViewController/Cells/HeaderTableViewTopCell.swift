@@ -9,11 +9,11 @@ import UIKit
 struct HeaderTableViewModelTop {
     let name: String
     let title: String
-    let precio: String
-    init(name: String, title: String, precio: String) {
+    let lang: String
+    init(name: String, title: String, lang: String) {
         self.name = name
         self.title = title
-        self.precio = precio
+        self.lang = lang
     }
 }
 class HeaderTableViewTopCell: UITableViewCell {
@@ -43,7 +43,7 @@ class HeaderTableViewTopCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    lazy var lblPriceDetail: UILabel = {
+    lazy var lblLangDetail: UILabel = {
         let label: UILabel = .init()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -63,7 +63,7 @@ class HeaderTableViewTopCell: UITableViewCell {
         imgStoreIcon.image = UIImage(named: "tienda")
         lblNameDetail.text = model.name
         lblTitleDetail.text = model.title
-        lblPriceDetail.text = "Precio : " + model.precio
+        lblLangDetail.text = "Language : " + model.lang
     }
     
     func setupUIUX() {
@@ -71,7 +71,7 @@ class HeaderTableViewTopCell: UITableViewCell {
         addSubview(imgStoreIcon)
         addSubview(lblNameDetail)
         addSubview(lblTitleDetail)
-        addSubview(lblPriceDetail)
+        addSubview(lblLangDetail)
         
         imgStoreIcon.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
         imgStoreIcon.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
@@ -89,10 +89,10 @@ class HeaderTableViewTopCell: UITableViewCell {
 
         lblTitleDetail.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        lblPriceDetail.topAnchor.constraint(equalTo: lblTitleDetail.bottomAnchor, constant: 20).isActive = true
-        lblPriceDetail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
-        lblPriceDetail.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30).isActive = true
-        lblPriceDetail.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        lblLangDetail.topAnchor.constraint(equalTo: lblTitleDetail.bottomAnchor, constant: 20).isActive = true
+        lblLangDetail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
+        lblLangDetail.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30).isActive = true
+        lblLangDetail.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
     }
     func configLabels() {
@@ -103,9 +103,9 @@ class HeaderTableViewTopCell: UITableViewCell {
         lblTitleDetail.font = UIFont.systemFont(ofSize: 20.0)
         lblTitleDetail.textColor = UIColor.gray
         lblTitleDetail.numberOfLines = 0
-        lblPriceDetail.font = UIFont.boldSystemFont(ofSize: 25.0)
-        lblPriceDetail.textColor = UIColor.orange
-        lblPriceDetail.numberOfLines = 0
+        lblLangDetail.font = UIFont.boldSystemFont(ofSize: 25.0)
+        lblLangDetail.textColor = UIColor.orange
+        lblLangDetail.numberOfLines = 0
      
     }
     override func awakeFromNib() {

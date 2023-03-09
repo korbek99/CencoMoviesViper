@@ -29,6 +29,7 @@ class TopRatesDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
+        setUpTableViewregister()
 
         // Do any additional setup after loading the view.
     }
@@ -36,11 +37,11 @@ class TopRatesDetailsViewController: UIViewController {
     private func setUpTableViewregister() {
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
-//        tableView.register(HeaderTableViewCell.self, forCellReuseIdentifier: "HeaderTableViewCell")
-//        tableView.register(BodyTableViewCell.self, forCellReuseIdentifier: "BodyTableViewCell")
-//        tableView.register(FooterTableViewCell.self, forCellReuseIdentifier: "FooterTableViewCell")
-//        tableView.delegate = self
-//        tableView.dataSource = self
+        tableView.register(HeaderTableViewTopCell.self, forCellReuseIdentifier: "HeaderTableViewTopCell")
+        tableView.register(BodyTableViewTopCell.self, forCellReuseIdentifier: "BodyTableViewTopCell")
+        tableView.register(FooterTableViewTopCell.self, forCellReuseIdentifier: "FooterTableViewTopCell")
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     private func setUpTableView() {
@@ -75,28 +76,28 @@ extension TopRatesDetailsViewController:  UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.row == 0 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell") as! HeaderTableViewCell
-//            cell.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
-//            cell.configure(HeaderTableViewModel(name: String(nombreString!), title: String(decripString!), precio: String(precio!)))
-//                    return cell
-//                }
-//        else if indexPath.row == 1 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "BodyTableViewCell") as! BodyTableViewCell
-//            cell.heightAnchor.constraint(equalToConstant: 280.0).isActive = true
-//            cell.isUserInteractionEnabled = false
-//            cell.configure(BodyTableViewModel(urlImg: imageString!))
-//
-//            return cell
-//        }
-//        else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "FooterTableViewCell") as! FooterTableViewCell
-//            cell.isUserInteractionEnabled = false
-//            cell.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
-//            return cell
-//        }
-        let cell = UITableViewCell()
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewTopCell") as! HeaderTableViewTopCell
+            cell.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
+            cell.configure(HeaderTableViewModelTop(name: String(nombreString!), title: String(decripString!), lang: String(language!)))
+                    return cell
+                }
+        else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BodyTableViewTopCell") as! BodyTableViewTopCell
+            cell.heightAnchor.constraint(equalToConstant: 280.0).isActive = true
+            cell.isUserInteractionEnabled = false
+            cell.configure(BodyTableViewModelTop(urlImg: imageString!))
+
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FooterTableViewTopCell") as! FooterTableViewTopCell
+            cell.isUserInteractionEnabled = false
+            cell.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
+            return cell
+        }
+//        let cell = UITableViewCell()
+//        return cell
     }
 }
 
