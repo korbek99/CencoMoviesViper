@@ -35,6 +35,7 @@
 		57A576AF29B99FBA00F062D7 /* endpointsDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A576AE29B99FBA00F062D7 /* endpointsDev.plist */; };
 		57A576B729B9A06500F062D7 /* webServicesTopRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A576B629B9A06500F062D7 /* webServicesTopRates.swift */; };
 		57A576C129B9AAD600F062D7 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A576C029B9AAD600F062D7 /* Movies.swift */; };
+		57A576C629BA1CA800F062D7 /* APIMovieErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A576C529BA1CA800F062D7 /* APIMovieErrorModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		57A576AE29B99FBA00F062D7 /* endpointsDev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = endpointsDev.plist; sourceTree = "<group>"; };
 		57A576B629B9A06500F062D7 /* webServicesTopRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webServicesTopRates.swift; sourceTree = "<group>"; };
 		57A576C029B9AAD600F062D7 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
+		57A576C529BA1CA800F062D7 /* APIMovieErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMovieErrorModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				57A576A429B99CAF00F062D7 /* APIEndpointModel.swift */,
 				57A576A929B99D3000F062D7 /* MoviesResult.swift */,
 				57A576C029B9AAD600F062D7 /* Movies.swift */,
+				57A576C529BA1CA800F062D7 /* APIMovieErrorModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				57A5763A29B994CC00F062D7 /* SceneDelegate.swift in Sources */,
 				57A5768629B9957100F062D7 /* TopRatesMoviesInteractor.swift in Sources */,
 				57A5767229B9952400F062D7 /* PopularMoviesRouter.swift in Sources */,
+				57A576C629BA1CA800F062D7 /* APIMovieErrorModel.swift in Sources */,
 				57A5769329B9994B00F062D7 /* TopRatesViewCell.swift in Sources */,
 				57A5768329B9957100F062D7 /* TopRatesMoviesRouter.swift in Sources */,
 				57A5769B29B9996800F062D7 /* PopularViewCell.swift in Sources */,

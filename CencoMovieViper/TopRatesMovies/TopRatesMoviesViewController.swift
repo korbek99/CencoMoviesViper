@@ -8,7 +8,7 @@ import UIKit
 struct ViewModelErrorTop {
     let title: String
     let message: String
-    let icon: UIImage?
+    let icon: String
     let code: String
     var animated: Bool = true
 }
@@ -69,11 +69,19 @@ class TopRatesMoviesViewController: UIViewController, TopRatesMoviesDisplayLogic
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpTableView()
         startloading()
+        interactor?.getInfoMoviesTopInteractor()
     }
 
     // MARK: - Private
-
+    private func setUpTableView() {
+         view.addSubview(tableView)
+         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+     }
     // MARK: - Public
     public func startloading(){
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
