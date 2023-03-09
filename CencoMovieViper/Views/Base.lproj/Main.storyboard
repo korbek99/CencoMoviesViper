@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Top Rates Movies View Controller-->
+        <!--Top Rates Movies-->
         <scene sceneID="rNv-6T-NpL">
             <objects>
                 <viewController storyboardIdentifier="TopRatesMoviesViewController" id="7hl-4c-7Kg" customClass="TopRatesMoviesViewController" customModule="CencoMovieViper" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,13 +18,13 @@
                         <viewLayoutGuide key="safeArea" id="4jB-Dx-BQx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="4Ef-Jt-iAQ"/>
+                    <navigationItem key="navigationItem" title="Top Rates Movies" id="iRM-rL-G10"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzu-I6-Za8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="206"/>
+            <point key="canvasLocation" x="1131.8840579710145" y="205.58035714285714"/>
         </scene>
-        <!--Popular-->
+        <!--Popular Movies-->
         <scene sceneID="UO9-iJ-ghJ">
             <objects>
                 <viewController storyboardIdentifier="PopularMoviesViewController" id="STQ-El-Zm2" customClass="PopularMoviesViewController" customModule="CencoMovieViper" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,11 +34,11 @@
                         <viewLayoutGuide key="safeArea" id="7jM-VD-ObF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Popular" image="suit.heart.fill" catalog="system" id="gYq-7u-mBv"/>
+                    <navigationItem key="navigationItem" title="Popular Movies" id="vMm-cs-2e6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXI-bJ-qOM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="-459"/>
+            <point key="canvasLocation" x="1131.8840579710145" y="-459.375"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gtZ-1w-lJq">
@@ -50,13 +50,51 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="STQ-El-Zm2" kind="relationship" relationship="viewControllers" id="gwr-02-J4T"/>
-                        <segue destination="7hl-4c-7Kg" kind="relationship" relationship="viewControllers" id="nh0-P0-ghb"/>
+                        <segue destination="R5n-kx-bWQ" kind="relationship" relationship="viewControllers" id="gwr-02-J4T"/>
+                        <segue destination="fdg-Wl-f7d" kind="relationship" relationship="viewControllers" id="nh0-P0-ghb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJQ-Cu-Bd4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-668" y="-155"/>
+        </scene>
+        <!--Popular-->
+        <scene sceneID="ndC-qY-j2n">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R5n-kx-bWQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Popular" image="suit.heart.fill" catalog="system" id="gYq-7u-mBv"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YCK-TN-Mrx">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="STQ-El-Zm2" kind="relationship" relationship="rootViewController" id="X8r-qA-dJ1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jzw-TD-tNG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221.73913043478262" y="-459.375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rti-2r-gFB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fdg-Wl-f7d" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="4Ef-Jt-iAQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nOY-1f-e27">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7hl-4c-7Kg" kind="relationship" relationship="rootViewController" id="PZF-aj-j4b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="veD-tM-0pz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221.73913043478262" y="205.58035714285714"/>
         </scene>
     </scenes>
     <resources>

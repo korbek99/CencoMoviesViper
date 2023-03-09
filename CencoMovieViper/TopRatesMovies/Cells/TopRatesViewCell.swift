@@ -101,9 +101,11 @@ class TopRatesViewCell: UITableViewCell {
      
     }
     func configure(_ model: TopRatesViewCellModel) {
-        
+        var baseurl:String = ""
+        baseurl = "http://image.tmdb.org/t/p/w500"
         DispatchQueue.main.async { [self] in
-            if let imageURL = URL(string: model.imagen) {
+            print(baseurl + model.imagen)
+            if let imageURL = URL(string: baseurl + model.imagen) {
            
                     let data = try? Data(contentsOf: imageURL)
                     if let data = data {
@@ -115,7 +117,7 @@ class TopRatesViewCell: UITableViewCell {
         
         lblName.text = model.name
         lbldescrip.text = model.title
-        lblLang.text =  "$" + model.lang
+        lblLang.text = "Language : " +  model.lang
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

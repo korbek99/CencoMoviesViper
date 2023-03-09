@@ -29,7 +29,7 @@ class webServicesPopular {
             } else if let data = data {
               
                 let articleList = try? JSONDecoder().decode(MoviesResult.self, from: data)
-                
+                print(articleList)
                 if let articleList = articleList?.results {
                    
                     completion(articleList)

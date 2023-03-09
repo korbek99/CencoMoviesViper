@@ -103,9 +103,10 @@ class PopularViewCell: UITableViewCell {
     }
     
     func configure(_ model: PopularViewCellModel) {
-        
+        var baseurl:String = ""
+        baseurl = "http://image.tmdb.org/t/p/w500"
         DispatchQueue.main.async { [self] in
-            if let imageURL = URL(string: model.imagen) {
+            if let imageURL = URL(string: baseurl + model.imagen) {
            
                     let data = try? Data(contentsOf: imageURL)
                     if let data = data {
@@ -117,7 +118,7 @@ class PopularViewCell: UITableViewCell {
         
         lblName.text = model.name
         lbldescrip.text = model.title
-        lblLang.text =  "$" + model.lang
+        lblLang.text = "Language : " +  model.lang
     }
     
     required init?(coder: NSCoder) {
