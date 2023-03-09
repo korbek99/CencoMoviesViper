@@ -13,7 +13,7 @@ struct ViewModelErrorPopular {
     var animated: Bool = true
 }
 protocol PopularMoviesDisplayLogic: AnyObject {
-    func displayViewTextsInfo(listaMovies: [Result])
+    func displayViewTextsInfo(listaMovies: [Movies])
     func displayDiscountNotFoundError(viewModel: ViewModelErrorPopular)
     func displayConnectionError(viewModel: ViewModelErrorPopular)
      func startloading()
@@ -57,7 +57,7 @@ class PopularMoviesViewController: UIViewController, PopularMoviesDisplayLogic {
         let table: UITableView = .init()
         table.delegate = self
         table.dataSource = self
-        table.register(TopRatesViewCell.self, forCellReuseIdentifier: "TopRatesViewCell")
+        table.register(PopularViewCell.self, forCellReuseIdentifier: "PopularViewCell")
         table.rowHeight = 200.0
         table.separatorColor = UIColor.orange
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +65,7 @@ class PopularMoviesViewController: UIViewController, PopularMoviesDisplayLogic {
     }()
 
     // MARK: - Attributes
-    public var listMovies: [Result] = []
+    public var listMovies: [Movies] = []
     // MARK: - View lifecycle
 
 
@@ -97,16 +97,22 @@ class PopularMoviesViewController: UIViewController, PopularMoviesDisplayLogic {
 
     // MARK: - PopularMoviesDisplayLogic
     
-    func displayViewTextsInfo(listaMovies: [Result]) {
+    func displayViewTextsInfo(listaMovies: [Movies]) {
         for items in listaMovies {
-//            listProducts.append(ProductosMenu(id: items.id,
-//                                              name: items.name,
-//                                              desc: items.desc,
-//                                              price: items.price,
-//                                              image: items.image,
-//                                              page: items.page,
-//                                              latitude: items.latitude,
-//                                              longitude: items.longitude))
+            listMovies.append(Movies(adult: items.adult,
+            backdropPath: items.backdropPath,
+            genreIDS: items.genreIDS,
+            id: items.id,
+            originalLanguage: items.originalLanguage,
+            originalTitle: items.originalTitle,
+            overview: items.overview,
+            popularity: items.popularity,
+            posterPath: items.posterPath,
+            releaseDate: items.releaseDate,
+            title: items.title,
+            video: items.video,
+            voteAverage: items.voteAverage,
+            voteCount: items.voteCount))
         }
         DispatchQueue.main.async { [self] in
             self.tableView.reloadData()
@@ -129,8 +135,8 @@ extension PopularMoviesViewController:  UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TopRatesViewCell") as? TopRatesViewCell else { return UITableViewCell() }
-        cell.configure(TopRatesViewCellModel(name: listMovies[indexPath.row].title, title: listMovies[indexPath.row].overview, lang: String(listMovies[indexPath.row].originalLanguage), imagen: listMovies[indexPath.row].posterPath))
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PopularViewCell") as? PopularViewCell else { return UITableViewCell() }
+        cell.configure(PopularViewCellModel(name: listMovies[indexPath.row].title, title: listMovies[indexPath.row].overview, lang: String(listMovies[indexPath.row].originalLanguage), imagen: listMovies[indexPath.row].posterPath))
         return cell
     }
     

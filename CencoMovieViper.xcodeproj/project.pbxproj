@@ -34,6 +34,7 @@
 		57A576AA29B99D3000F062D7 /* MoviesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A576A929B99D3000F062D7 /* MoviesResult.swift */; };
 		57A576AF29B99FBA00F062D7 /* endpointsDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A576AE29B99FBA00F062D7 /* endpointsDev.plist */; };
 		57A576B729B9A06500F062D7 /* webServicesTopRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A576B629B9A06500F062D7 /* webServicesTopRates.swift */; };
+		57A576C129B9AAD600F062D7 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A576C029B9AAD600F062D7 /* Movies.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		57A576A929B99D3000F062D7 /* MoviesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesResult.swift; sourceTree = "<group>"; };
 		57A576AE29B99FBA00F062D7 /* endpointsDev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = endpointsDev.plist; sourceTree = "<group>"; };
 		57A576B629B9A06500F062D7 /* webServicesTopRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webServicesTopRates.swift; sourceTree = "<group>"; };
+		57A576C029B9AAD600F062D7 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 			children = (
 				57A576A429B99CAF00F062D7 /* APIEndpointModel.swift */,
 				57A576A929B99D3000F062D7 /* MoviesResult.swift */,
+				57A576C029B9AAD600F062D7 /* Movies.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				57A576B729B9A06500F062D7 /* webServicesTopRates.swift in Sources */,
 				57A5768429B9957100F062D7 /* TopRatesMoviesModels.swift in Sources */,
 				57A5767429B9952400F062D7 /* PopularMoviesViewController.swift in Sources */,
+				57A576C129B9AAD600F062D7 /* Movies.swift in Sources */,
 				57A5768229B9957100F062D7 /* TopRatesMoviesWorker.swift in Sources */,
 				57A5767029B9952400F062D7 /* PopularMoviesPresenter.swift in Sources */,
 				57A5763829B994CC00F062D7 /* AppDelegate.swift in Sources */,

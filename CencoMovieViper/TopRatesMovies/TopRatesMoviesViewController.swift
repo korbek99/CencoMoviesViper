@@ -13,7 +13,7 @@ struct ViewModelErrorTop {
     var animated: Bool = true
 }
 protocol TopRatesMoviesDisplayLogic: AnyObject {
-    func displayViewTextsInfo(listaMovies: [Result])
+    func displayViewTextsInfo(listaMovies: [Movies])
     func displayDiscountNotFoundError(viewModel: ViewModelErrorTop)
     func displayConnectionError(viewModel: ViewModelErrorTop)
      func startloading()
@@ -64,7 +64,7 @@ class TopRatesMoviesViewController: UIViewController, TopRatesMoviesDisplayLogic
     }()
 
     // MARK: - Attributes
-    public var listMovies: [Result] = []
+    public var listMovies: [Movies] = []
     // MARK: - View lifecycle
 
     override func viewDidLoad() {
@@ -91,16 +91,22 @@ class TopRatesMoviesViewController: UIViewController, TopRatesMoviesDisplayLogic
     // MARK: - Actions
 
     // MARK: - TopRatesMoviesDisplayLogic
-    func displayViewTextsInfo(listaMovies: [Result]) {
+    func displayViewTextsInfo(listaMovies: [Movies]) {
         for items in listaMovies {
-//            listProducts.append(ProductosMenu(id: items.id,
-//                                              name: items.name,
-//                                              desc: items.desc,
-//                                              price: items.price,
-//                                              image: items.image,
-//                                              page: items.page,
-//                                              latitude: items.latitude,
-//                                              longitude: items.longitude))
+            listMovies.append(Movies(adult: items.adult,
+            backdropPath: items.backdropPath,
+            genreIDS: items.genreIDS,
+            id: items.id,
+            originalLanguage: items.originalLanguage,
+            originalTitle: items.originalTitle,
+            overview: items.overview,
+            popularity: items.popularity,
+            posterPath: items.posterPath,
+            releaseDate: items.releaseDate,
+            title: items.title,
+            video: items.video,
+            voteAverage: items.voteAverage,
+            voteCount: items.voteCount))
         }
         DispatchQueue.main.async { [self] in
             self.tableView.reloadData()
