@@ -36,7 +36,9 @@ class BodyTableViewTopCell: UITableViewCell {
     }
     
     func configure(_ model: BodyTableViewModelTop) {
-        if let imageURL = URL(string: model.urlImg) {
+        var baseurl:String = ""
+        baseurl = "http://image.tmdb.org/t/p/w500"
+        if let imageURL = URL(string: baseurl + model.urlImg) {
        
                 let data = try? Data(contentsOf: imageURL)
                 if let data = data {

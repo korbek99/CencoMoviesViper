@@ -79,13 +79,13 @@ extension PopularDetailsViewController:  UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewPopCell") as! HeaderTableViewPopCell
-            cell.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
+            cell.heightAnchor.constraint(equalToConstant: 300.0).isActive = true
             cell.configure(HeaderTableViewModelPop(name: String(nombreString!), title: String(decripString!), lang: String(language!)))
                     return cell
                 }
         else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BodyTableViewPopCell") as! BodyTableViewPopCell
-            cell.heightAnchor.constraint(equalToConstant: 280.0).isActive = true
+            cell.heightAnchor.constraint(equalToConstant: 380.0).isActive = true
             cell.isUserInteractionEnabled = false
             cell.configure(BodyTableViewModelPop(urlImg: imageString!))
 

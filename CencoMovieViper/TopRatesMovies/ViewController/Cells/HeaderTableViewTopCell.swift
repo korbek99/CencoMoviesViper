@@ -81,7 +81,7 @@ class HeaderTableViewTopCell: UITableViewCell {
         lblNameDetail.topAnchor.constraint(equalTo: topAnchor, constant: 22).isActive = true
         lblNameDetail.leadingAnchor.constraint(equalTo: imgStoreIcon.trailingAnchor, constant: 15).isActive = true
         lblNameDetail.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
-        lblNameDetail.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        lblNameDetail.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         lblTitleDetail.topAnchor.constraint(equalTo: lblNameDetail.bottomAnchor, constant: 10).isActive = true
         lblTitleDetail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
@@ -92,18 +92,17 @@ class HeaderTableViewTopCell: UITableViewCell {
         lblLangDetail.topAnchor.constraint(equalTo: lblTitleDetail.bottomAnchor, constant: 20).isActive = true
         lblLangDetail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
         lblLangDetail.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30).isActive = true
-        lblLangDetail.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        lblLangDetail.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
     }
     func configLabels() {
-        lblNameDetail.font = UIFont.boldSystemFont(ofSize: 35.0)
+        lblNameDetail.font = UIFont.boldSystemFont(ofSize: 20.0)
         lblNameDetail.textColor = UIColor.black
         lblNameDetail.numberOfLines = 0
-        
-        lblTitleDetail.font = UIFont.systemFont(ofSize: 20.0)
+        lblTitleDetail.font = UIFont.systemFont(ofSize: 15.0)
         lblTitleDetail.textColor = UIColor.gray
         lblTitleDetail.numberOfLines = 0
-        lblLangDetail.font = UIFont.boldSystemFont(ofSize: 25.0)
+        lblLangDetail.font = UIFont.boldSystemFont(ofSize: 15.0)
         lblLangDetail.textColor = UIColor.orange
         lblLangDetail.numberOfLines = 0
      
