@@ -22,6 +22,11 @@ protocol PopularMoviesDisplayLogic: AnyObject {
 
 class PopularMoviesViewController: UIViewController, PopularMoviesDisplayLogic {
 
+       var listMenus = [Movies]()
+       var searching = false
+       var searchedMenu =  [Movies]()
+       
+       let searchController = UISearchController(searchResultsController: nil)
 
     var interactor: PopularMoviesBusinessLogic?
     var router: (NSObjectProtocol & PopularMoviesRoutingLogic & PopularMoviesDataPassing)?
@@ -76,8 +81,24 @@ class PopularMoviesViewController: UIViewController, PopularMoviesDisplayLogic {
         setUpTableView()
         startloading()
         interactor?.getInfoMoviesPopularInteractor()
+        configureSearchController()
     }
 
+    func configureSearchController(){
+        
+        searchController.loadViewIfNeeded()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically  = false
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+        searchController.searchBar.placeholder = "Buscar por nombre"
+        
+    }
+    
     // MARK: - Private
     private func setUpTableView() {
          view.addSubview(tableView)
@@ -135,21 +156,65 @@ class PopularMoviesViewController: UIViewController, PopularMoviesDisplayLogic {
 
     }
 }
-extension PopularMoviesViewController:  UITableViewDelegate, UITableViewDataSource {
+extension PopularMoviesViewController:  UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
+    
+func updateSearchResults(for searchController: UISearchController) {
+   let searchText = searchController.searchBar.text!
+   if !searchText.isEmpty {
+       searching = true
+       searchedMenu.removeAll()
+       for item in listMovies {
+           if item.originalTitle.lowercased().contains(searchText.lowercased())
+           {
+               searchedMenu.append(item)
+           }
+       }
+   }else{
+       searching = false
+       searchedMenu.removeAll()
+       searchedMenu = listMovies
+   }
+   
+   tableView.reloadData()
+}
+
+func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
+{
+   searching = false
+   searchedMenu.removeAll()
+   tableView.reloadData()
+}
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listMovies.count
+        if searching{
+            return searchedMenu.count
+        }else{
+            return listMovies.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PopularViewCell") as? PopularViewCell else { return UITableViewCell() }
-        cell.configure(PopularViewCellModel(name: listMovies[indexPath.row].title, title: listMovies[indexPath.row].overview, lang: String(listMovies[indexPath.row].originalLanguage), imagen: listMovies[indexPath.row].posterPath))
+        
+        if searching {
+            cell.configure(PopularViewCellModel(name: searchedMenu[indexPath.row].title, title: searchedMenu[indexPath.row].overview, lang: String(searchedMenu[indexPath.row].originalLanguage), imagen: searchedMenu[indexPath.row].posterPath))
+        } else {
+            cell.configure(PopularViewCellModel(name: listMovies[indexPath.row].title, title: listMovies[indexPath.row].overview, lang: String(listMovies[indexPath.row].originalLanguage), imagen: listMovies[indexPath.row].posterPath))
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        router?.routeToDetails(name:listMovies[indexPath.row].title ,desc:listMovies[indexPath.row].overview ,images:String(listMovies[indexPath.row].posterPath),lang: listMovies[indexPath.row].originalLanguage)
+        
+        if searching {
+            router?.routeToDetails(name:searchedMenu[indexPath.row].title ,desc:searchedMenu[indexPath.row].overview ,images:String(searchedMenu[indexPath.row].posterPath),lang: searchedMenu[indexPath.row].originalLanguage)
+        } else {
+            router?.routeToDetails(name:listMovies[indexPath.row].title ,desc:listMovies[indexPath.row].overview ,images:String(listMovies[indexPath.row].posterPath),lang: listMovies[indexPath.row].originalLanguage)
+        }
+       
     }
 }
 

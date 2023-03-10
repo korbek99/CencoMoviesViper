@@ -22,6 +22,12 @@ protocol TopRatesMoviesDisplayLogic: AnyObject {
 
 class TopRatesMoviesViewController: UIViewController, TopRatesMoviesDisplayLogic {
 
+    var listMenus = [Movies]()
+    var searching = false
+    var searchedMenu =  [Movies]()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
     var interactor: TopRatesMoviesBusinessLogic?
     var router: (NSObjectProtocol & TopRatesMoviesRoutingLogic & TopRatesMoviesDataPassing)?
 
@@ -72,8 +78,24 @@ class TopRatesMoviesViewController: UIViewController, TopRatesMoviesDisplayLogic
         setUpTableView()
         startloading()
         interactor?.getInfoMoviesTopInteractor()
+        configureSearchController()
     }
 
+    func configureSearchController(){
+        
+        searchController.loadViewIfNeeded()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically  = false
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+        searchController.searchBar.placeholder = "Buscar por nombre"
+        
+    }
+    
     // MARK: - Private
     private func setUpTableView() {
          view.addSubview(tableView)
@@ -129,20 +151,63 @@ class TopRatesMoviesViewController: UIViewController, TopRatesMoviesDisplayLogic
 
     }
 }
-extension TopRatesMoviesViewController:  UITableViewDelegate, UITableViewDataSource {
+extension TopRatesMoviesViewController:  UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
+    func updateSearchResults(for searchController: UISearchController) {
+       let searchText = searchController.searchBar.text!
+       if !searchText.isEmpty {
+           searching = true
+           searchedMenu.removeAll()
+           for item in listMovies {
+               if item.originalTitle.lowercased().contains(searchText.lowercased())
+               {
+                   searchedMenu.append(item)
+               }
+           }
+       }else{
+           searching = false
+           searchedMenu.removeAll()
+           searchedMenu = listMovies
+       }
+       
+       tableView.reloadData()
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
+    {
+       searching = false
+       searchedMenu.removeAll()
+       tableView.reloadData()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listMovies.count
+        if searching{
+            return searchedMenu.count
+        }else{
+            return listMovies.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TopRatesViewCell") as? TopRatesViewCell else { return UITableViewCell() }
-        cell.configure(TopRatesViewCellModel(name: listMovies[indexPath.row].title, title: listMovies[indexPath.row].overview, lang: String(listMovies[indexPath.row].originalLanguage), imagen: listMovies[indexPath.row].posterPath))
+        
+        if searching {
+            cell.configure(TopRatesViewCellModel(name: searchedMenu[indexPath.row].title, title: searchedMenu[indexPath.row].overview, lang: String(searchedMenu[indexPath.row].originalLanguage), imagen: searchedMenu[indexPath.row].posterPath))
+        } else {
+            cell.configure(TopRatesViewCellModel(name: listMovies[indexPath.row].title, title: listMovies[indexPath.row].overview, lang: String(listMovies[indexPath.row].originalLanguage), imagen: listMovies[indexPath.row].posterPath))
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        router?.routeToDetailsTop(name:listMovies[indexPath.row].title ,desc:listMovies[indexPath.row].overview ,images:String(listMovies[indexPath.row].posterPath),lang: listMovies[indexPath.row].originalLanguage)
+        
+        if searching {
+            router?.routeToDetailsTop(name:searchedMenu[indexPath.row].title ,desc:searchedMenu[indexPath.row].overview ,images:String(searchedMenu[indexPath.row].posterPath),lang: searchedMenu[indexPath.row].originalLanguage)
+        } else {
+            router?.routeToDetailsTop(name:listMovies[indexPath.row].title ,desc:listMovies[indexPath.row].overview ,images:String(listMovies[indexPath.row].posterPath),lang: listMovies[indexPath.row].originalLanguage)
+            
+        }
+        
     }
 }
